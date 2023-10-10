@@ -19,6 +19,23 @@ un array de personas mayores o igual a 18 años.
 - Imprimir en consola el array resultante.
 
 */
+const edadIngresada = document.getElementById('edad');
+const personas = JSON.parse(personasJSON);
+const ingresar = document.querySelector('#boton');
+ingresar.onclick = () => {
+    document.getElementById('datosPersonas').innerHTML= '';
+    localStorage.clear()
+    localStorage.setItem('edadIngresada', edadIngresada.value)
+    let edadChekear = localStorage.getItem('edadIngresada')
+    const personasFiltradas = personas.filter(persona => {
+        return persona.edad > edadChekear;    
+    })
+    personasFiltradas.forEach(persona => {
+        document.getElementById('datosPersonas').innerHTML+= 'Nombre:' + persona.nombre + ' ' + 'Edad:' + persona.edad + '<br>';
+    })
+    console.log(personasFiltradas)
+}    
+
 
 /* 2 - Enunciado
 
